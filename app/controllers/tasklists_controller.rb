@@ -11,7 +11,13 @@ class TasklistsController < ApplicationController
   end
 
   def create
-    # @tasklist = Tasklist.new(tasklist_params)
+    @tasklist = Tasklist.new(tasklist_params)
+    if @tasklist.save
+      flash[:notice] = 'Tasklist created successfully'
+      redirect_to tasklist_path(@tasklist)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -25,8 +31,8 @@ class TasklistsController < ApplicationController
 
   private
 
-  # def tasklist_params
-  #   params.require(:tasklist).permit(:name)
-  # end
+  def tasklist_params
+    params.require(:tasklist).permit(:name)
+  end
 
 end
