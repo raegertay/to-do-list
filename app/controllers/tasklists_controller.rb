@@ -1,5 +1,7 @@
 class TasklistsController < ApplicationController
 
+  before_action :prepare_tasklist, only: [:show]
+
   def index
   end
 
@@ -33,6 +35,10 @@ class TasklistsController < ApplicationController
 
   def tasklist_params
     params.require(:tasklist).permit(:name)
+  end
+
+  def prepare_tasklist
+    @tasklist = Tasklist.find(params[:id])
   end
 
 end
