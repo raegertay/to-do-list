@@ -3,6 +3,8 @@ class TasklistsController < ApplicationController
   before_action :prepare_tasklist, only: [:show]
 
   def index
+    @tasklists = Tasklist.all.order(:name)
+    flash[:alert] = 'No task list found' if @tasklists.empty?
   end
 
   def show
