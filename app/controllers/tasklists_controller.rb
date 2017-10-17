@@ -1,6 +1,6 @@
 class TasklistsController < ApplicationController
 
-  before_action :prepare_tasklist, only: [:show]
+  before_action :prepare_tasklist, only: [:show, :destroy]
 
   def index
     @tasklists = Tasklist.all.order(:name)
@@ -32,6 +32,9 @@ class TasklistsController < ApplicationController
   end
 
   def destroy
+    @tasklist.destroy
+    flash[:notice] = 'Task List deleted succesfully'
+    redirect_to tasklists_path
   end
 
   private
