@@ -12,7 +12,7 @@ before_action :prepare_tasklist
   def create
     @task = @tasklist.tasks.new(task_params)
     if @task.save
-      redirect_to tasklist_task_index_path(@tasklist)
+      redirect_to tasklist_path(@tasklist)
     else
       render :new
     end

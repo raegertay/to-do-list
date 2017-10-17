@@ -8,6 +8,7 @@ class TasklistsController < ApplicationController
   end
 
   def show
+    @tasks = @tasklist.tasks
   end
 
   def new
