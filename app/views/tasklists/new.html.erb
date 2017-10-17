@@ -2,15 +2,13 @@
 
 <h1 class='section-title text-center'>New Tasklist</h1>
 
-  <ul>
-    <% @tasklist.errors[:name].each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
+<ul>
+  <% @tasklist.errors[:name].each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+</ul>
 
-
-  <%= simple_form_for @tasklist, url: tasklists_path, method: :post, html: {class: 'form-horizontal'} do |f| %>
-  <%= f.input :name, label: 'Tasklist Name', placeholder: "School", error: false %>
-  <%= f.button :submit, "Create Tasklist" %>
-
+<%= simple_form_for @tasklist, url: tasklists_path, method: :post, html: {class: 'form-horizontal'} do |f| %>
+<%= f.input :name, label: 'Tasklist Name', placeholder: "School", error: false %>
+<%= f.button :submit, "Create Tasklist" %>
 <% end %>

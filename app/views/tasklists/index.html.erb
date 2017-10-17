@@ -21,7 +21,7 @@
       <tr>
         <th scope="row"><%= index %></th>
         <td><%= tasklist.name %></td>
-        <td><%= link_to 'Show', tasklist_path(tasklist) %></td>
+        <td><%= link_to 'Show Tasks', tasklist_path(tasklist) %></td>
         <td><%= link_to 'Edit', edit_tasklist_path(tasklist) %></td>
         <td><%= link_to 'Delete', tasklist_path(tasklist), method: :delete, data: { confirm: "Are you sure you want to delete task list: #{tasklist.name}?" } %></td>
       </tr>
