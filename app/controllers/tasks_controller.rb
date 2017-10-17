@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
 
-before_action :prepare_task
+before_action :prepare_tasklist
 
   def index
     @task = Task.all
@@ -15,6 +15,7 @@ before_action :prepare_task
       redirect_to tasklist_task_index_path(@tasklist)
     else
       render :new
+    end
   end
 
   def edit
@@ -39,7 +40,7 @@ private
     params.require(:task).permit(:name, :due_date, :status)
   end
 
-  def prepare_task
+  def prepare_tasklist
     @tasklist = Tasklist.find(params[:tasklist_id])
   end
 

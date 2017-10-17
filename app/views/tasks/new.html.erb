@@ -1,0 +1,15 @@
+<h1>
+  Tasklist: <%= @tasklist.name %>
+</h1>
+
+<h3>New Task</h3>
+
+<p>
+  <%= simple_form_for @tasklist.tasks.build, url: tasklist_tasks_path(@tasklist), method: :post do |f| %>
+  <%= f.input :name %>
+  <%= f.input :due_date %>
+  <%= f.input :status %>
+  <br>
+  <%= f.button :submit %>
+  <% end %>
+</p>
