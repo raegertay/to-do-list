@@ -5,11 +5,7 @@ class TasklistsController < ApplicationController
 
   def index
     # byebug
-    @tasklists = if params[:sort]
-                   Tasklist.all.order(sort_column + ' ' + sort_direction)
-                 else
-                   Tasklist.search(search_term).order(:name)
-                 end
+    @tasklists = Tasklist.search(search_term).order(sort_column + ' ' + sort_direction)
     flash[:alert] = 'No task list found' if @tasklists.empty?
   end
 
@@ -63,11 +59,11 @@ class TasklistsController < ApplicationController
   end
 
   def sort_column
-    params[:sort]
+    params[:sort] || 'name'
   end
 
   def sort_direction
-    params[:direction]
+    params[:direction] || 'asc'
   end
 
 end
