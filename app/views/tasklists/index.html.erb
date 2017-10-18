@@ -1,41 +1,60 @@
-  <h1 class='section-title text-center'>My Task Lists</h1>
+<h1 class='section-title text-center'>My Task Lists</h1>
 
-  <%= link_to 'New Task List', new_tasklist_path %>
-  <p class='flash-notice text-center'><%= flash[:notice] %></p>
-  <p class='flash-alert text-center'><%= flash[:alert] %></p>
+<%= link_to 'New Task List', new_tasklist_path %>
+<p class='flash-notice text-center'><%= flash[:notice] %></p>
+<p class='flash-alert text-center'><%= flash[:alert] %></p>
 
-  <br />
+<br />
 
-  <%= simple_form_for :search_bar, url: tasklists_path, method: :get do |f| %>
-  <%= f.input :search_term, label: false, placeholder: "Search tasklists", input_html: {value: search_term, name: 'search_term'} %>
-  <%= f.button :submit, "Search", name: nil %>
-  <%= link_to 'Full list', tasklists_path %>
-  <% end %>
+<%= simple_form_for :search_bar, url: tasklists_path, method: :get do |f| %>
+<%= f.input :search_term, label: false, placeholder: "Search tasklists", input_html: {value: search_term, name: 'search_term'} %>
+<%= f.button :submit, "Search", name: nil %>
+<%= link_to 'Full list', tasklists_path %>
+<% end %>
 
-  <br />
+<br />
 
-  <table class='table table-hover'>
-    <thead>
-      <tr>
-        <th>#</th>
-        <th><%= sortable 'name' %></th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+<nav aria-label="Search results pages">
+  <ul class="pagination">
+    <li class="page-item pagination-previous"><%= paginatable('<<', @page - 1) %></li>
+    <% (1..@total_pages).each do |page| %>
+    <li class="page-item pagination-number"><%= paginatable(page, page) %></li>
+    <% end %>
+    <li class="page-item pagination-next"><%= paginatable('>>', @page + 1) %></li>
+  </ul>
+</nav>
 
-    <tbody>
-      <% count = 0 %>
-      <% @tasklists.each.with_index(1) do |tasklist, index| %>
-      <tr>
-        <th scope="row"><%= index %></th>
-        <td><%= tasklist.name %></td>
-        <td><%= link_to 'Show Tasks', tasklist_path(tasklist) %></td>
-        <td><%= link_to 'Edit', edit_tasklist_path(tasklist) %></td>
-        <td><%= link_to 'Delete', tasklist_path(tasklist), method: :delete, data: { confirm: "Are you sure you want to delete task list: #{tasklist.name}?" } %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+<%= javascript_tag do %>
+  var page = <%= @page %>;
+  var total_pages = <%= @total_pages %>;
+  $('.pagination-previous').toggleClass('disabled', page <= 1);
+  $('.pagination-next').toggleClass('disabled', page >= total_pages);
+  $('pagination-number').removeClass('active');
+  $(`li:contains(${page.toString()})`).addClass('active');
+<% end %>
+
+<table class='table table-hover'>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th><%= sortable 'name' %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% start_count = (@page - 1) * TasklistsController::TASKLIST_PER_PAGE + 1 %>
+    <% @tasklists.each.with_index(start_count) do |tasklist, index| %>
+    <tr>
+      <th scope="row"><%= index %></th>
+      <td><%= tasklist.name %></td>
+      <td><%= link_to 'Show Tasks', tasklist_path(tasklist) %></td>
+      <td><%= link_to 'Edit', edit_tasklist_path(tasklist) %></td>
+      <td><%= link_to 'Delete', tasklist_path(tasklist), method: :delete, data: { confirm: "Are you sure you want to delete task list: #{tasklist.name}?" } %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
 </div>
 </div>
