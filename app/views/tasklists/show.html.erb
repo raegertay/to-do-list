@@ -1,0 +1,37 @@
+<%= link_to 'Back', tasklists_path %>
+
+<p class='flash-notice text-center'><%= flash[:notice] %></p>
+
+<div class='text-center'>
+  <h1 class='section-title'><%= @tasklist.name %></h1>
+</div>
+
+<%= link_to 'New Task', new_tasklist_task_path(@tasklist) %>
+
+<br />
+
+<table class='table table-hover'>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Task Name</th>
+      <th>Due Date</th>
+      <th>Status</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% count = 0 %>
+    <% @tasks.each.with_index(1) do |task, index| %>
+    <tr>
+      <th scope="row"><%= index %></th>
+      <td><%= task.name %></td>
+      <td><%= task.due_date %></td>
+      <td><%= task.status %></td>
+      <td><%= link_to 'Edit', edit_task_path(task) %></td>
+      <td><%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: "Are you sure you want to delete task: #{task.name}?" } %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
