@@ -16,13 +16,22 @@
 
 <nav aria-label="Search results pages">
   <ul class="pagination">
-    <li class="page-item"><%= paginatable('<<', @page - 1) if @page > 1 %></li>
+    <li class="page-item pagination-previous"><%= paginatable('<<', @page - 1) %></li>
     <% (1..@total_pages).each do |page| %>
-    <li class="page-item"><%= paginatable(page, page) %></li>
+    <li class="page-item pagination-number"><%= paginatable(page, page) %></li>
     <% end %>
-    <li class="page-item"><%= paginatable('>>', @page + 1) if @page < @total_pages %></li>
+    <li class="page-item pagination-next"><%= paginatable('>>', @page + 1) %></li>
   </ul>
 </nav>
+
+<%= javascript_tag do %>
+  var page = <%= @page %>;
+  var total_pages = <%= @total_pages %>;
+  $('.pagination-previous').toggleClass('disabled', page <= 1);
+  $('.pagination-next').toggleClass('disabled', page >= total_pages);
+  $('pagination-number').removeClass('active');
+  $(`li:contains(${page.toString()})`).addClass('active');
+<% end %>
 
 <table class='table table-hover'>
   <thead>

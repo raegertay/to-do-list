@@ -1,5 +1,6 @@
 module ApplicationHelper
 
+  # Make table header sortable
   def sortable(column, title=nil)
     title ||= column.titleize
     direction = column == sort_column && sort_direction == 'asc' ? 'desc' : 'asc'
@@ -9,6 +10,7 @@ module ApplicationHelper
     end
   end
 
+  # Create links for bootstrap pagination
   def paginatable(body, page)
     link_to body, { page: page, search_term: search_term, sort: sort_column, direction: sort_direction }, class: 'page-link'
   end
