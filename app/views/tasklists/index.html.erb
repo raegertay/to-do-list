@@ -14,11 +14,15 @@
 
 <br />
 
-<%= paginatable('Previous', @page - 1) if @page > 1 %>
-<% (1..@total_pages).each do |page| %>
-<%= paginatable(page, page) %>
-<% end %>
-<%= paginatable('Next', @page + 1) if @page < @total_pages %>
+<nav aria-label="Search results pages">
+  <ul class="pagination">
+    <li class="page-item"><%= paginatable('<<', @page - 1) if @page > 1 %></li>
+    <% (1..@total_pages).each do |page| %>
+    <li class="page-item"><%= paginatable(page, page) %></li>
+    <% end %>
+    <li class="page-item"><%= paginatable('>>', @page + 1) if @page < @total_pages %></li>
+  </ul>
+</nav>
 
 <table class='table table-hover'>
   <thead>

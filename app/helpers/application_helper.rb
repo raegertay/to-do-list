@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def paginatable(body, page)
-    link_to body, page: page, search_term: search_term, sort: sort_column, direction: sort_direction
+    link_to body, { page: page, search_term: search_term, sort: sort_column, direction: sort_direction }, class: 'page-link'
   end
 
 end
