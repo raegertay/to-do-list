@@ -14,6 +14,9 @@
 
   <br />
 
+  <%= link_to 'Back', page: @page - 1, search_term: search_term, sort: sort_column, direction: sort_direction %>
+  <%= link_to 'Next', page: @page + 1, search_term: search_term, sort: sort_column, direction: sort_direction %>
+
   <table class='table table-hover'>
     <thead>
       <tr>
@@ -24,8 +27,8 @@
     </thead>
 
     <tbody>
-      <% count = 0 %>
-      <% @tasklists.each.with_index(1) do |tasklist, index| %>
+      <% start_count = (@page - 1) * TasklistsController::TASKLIST_PER_PAGE + 1 %>
+      <% @tasklists.each.with_index(start_count) do |tasklist, index| %>
       <tr>
         <th scope="row"><%= index %></th>
         <td><%= tasklist.name %></td>
