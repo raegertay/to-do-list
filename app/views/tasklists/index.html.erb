@@ -7,7 +7,7 @@
   <br />
 
   <%= simple_form_for :search_bar, url: tasklists_path, method: :get do |f| %>
-  <%= f.input :search_term, label: false, placeholder: "Search tasklists", input_html: {value: search_term_params, name: 'search_term'} %>
+  <%= f.input :search_term, label: false, placeholder: "Search tasklists", input_html: {value: search_term, name: 'search_term'} %>
   <%= f.button :submit, "Search", name: nil %>
   <%= link_to 'Full list', tasklists_path %>
   <% end %>
@@ -18,7 +18,7 @@
     <thead>
       <tr>
         <th>#</th>
-        <th>Name</th>
+        <th><%= sortable 'name' %></th>
         <th colspan="3"></th>
       </tr>
     </thead>

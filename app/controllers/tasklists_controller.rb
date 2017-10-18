@@ -1,11 +1,11 @@
 class TasklistsController < ApplicationController
 
-  helper_method :search_term_params
+  helper_method :search_term, :sort_column, :sort_direction
   before_action :prepare_tasklist, only: [:show, :destroy, :edit, :update]
 
   def index
     # byebug
-    @tasklists = Tasklist.search(search_term_params).order(:name)
+    @tasklists = Tasklist.search(search_term).order(sort_column + ' ' + sort_direction)
     flash[:alert] = 'No task list found' if @tasklists.empty?
   end
 
@@ -54,8 +54,16 @@ class TasklistsController < ApplicationController
     @tasklist = Tasklist.find(params[:id])
   end
 
-  def search_term_params
+  def search_term
     params[:search_term]
+  end
+
+  def sort_column
+    Tasklist.column_names.include?(params[:sort]) ? params[:sort] : 'name'
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
   end
 
 end
