@@ -6,6 +6,14 @@
 
   <br />
 
+  <%= simple_form_for :search_bar, url: tasklists_path, method: :get do |f| %>
+  <%= f.input :search_term, label: false, placeholder: "Search tasklists", input_html: {value: search_term_params, name: 'search_term'} %>
+  <%= f.button :submit, "Search", name: nil %>
+  <%= link_to 'Full list', tasklists_path %>
+  <% end %>
+
+  <br />
+
   <table class='table table-hover'>
     <thead>
       <tr>

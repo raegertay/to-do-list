@@ -1,9 +1,11 @@
 class TasklistsController < ApplicationController
 
+  helper_method :search_term_params
   before_action :prepare_tasklist, only: [:show, :destroy, :edit, :update]
 
   def index
-    @tasklists = Tasklist.all.order(:name)
+    # byebug
+    @tasklists = Tasklist.search(search_term_params).order(:name)
     flash[:alert] = 'No task list found' if @tasklists.empty?
   end
 
@@ -50,6 +52,10 @@ class TasklistsController < ApplicationController
 
   def prepare_tasklist
     @tasklist = Tasklist.find(params[:id])
+  end
+
+  def search_term_params
+    params[:search_term]
   end
 
 end
