@@ -9,4 +9,8 @@ module ApplicationHelper
     end
   end
 
+  def paginatable(body, page)
+    link_to body, page: page, search_term: search_term, sort: sort_column, direction: sort_direction
+  end
+
 end
