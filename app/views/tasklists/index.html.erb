@@ -14,8 +14,11 @@
 
   <br />
 
-  <%= link_to 'Back', page: @page - 1, search_term: search_term, sort: sort_column, direction: sort_direction %>
-  <%= link_to 'Next', page: @page + 1, search_term: search_term, sort: sort_column, direction: sort_direction %>
+  <%= link_to 'Previous', page: @page - 1, search_term: search_term, sort: sort_column, direction: sort_direction if @page > 1 %>
+  <% (1..@total_pages).each do |page| %>
+  <%= link_to page, page: page, search_term: search_term, sort: sort_column, direction: sort_direction %>
+  <% end %>
+  <%= link_to 'Next', page: @page + 1, search_term: search_term, sort: sort_column, direction: sort_direction if @page < @total_pages %>
 
   <table class='table table-hover'>
     <thead>

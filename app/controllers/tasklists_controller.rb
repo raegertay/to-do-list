@@ -8,7 +8,9 @@ class TasklistsController < ApplicationController
 
   def index
     # byebug
-    @tasklists = Tasklist.search(search_term).order(sort_column + ' ' + sort_direction).limit(TASKLIST_PER_PAGE).offset((@page - 1) * TASKLIST_PER_PAGE)
+    @tasklists = Tasklist.search(search_term).order(sort_column + ' ' + sort_direction)
+    @total_pages = @tasklists.count / TASKLIST_PER_PAGE + 1
+    @tasklists = @tasklists.limit(TASKLIST_PER_PAGE).offset((@page - 1) * TASKLIST_PER_PAGE)
     flash[:alert] = 'No task list found' if @tasklists.empty?
   end
 
