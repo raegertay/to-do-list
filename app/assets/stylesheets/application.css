@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+.full-img {
+  background: url("Home-Title.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 900px;
+  margin: 0;
+  padding: 0;
+}

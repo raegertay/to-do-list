@@ -1,4 +1,4 @@
-<h1 class='display-3 text-center'>Edit Task List name</h1>
+<h1 class='display-3 text-center'>Edit Task List Name</h1>
 <br>
 <div class="container">
   <div class="row justify-content-center">
@@ -13,12 +13,12 @@
           <a id="axn-full"><%= link_to 'Full Task List', tasklists_path %></a>
         </button>
       </div>
+      <br>
+      <div class="row justify-content-center">
+        <% @tasklist.errors[:name].each do |message| %>
+        <%= message %></li>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-<br>
-<p>
-  <% @tasklist.errors[:name].each do |message| %>
-  <%= message %></li>
-  <% end %>
-</p>
