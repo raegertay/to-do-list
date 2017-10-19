@@ -7,7 +7,7 @@
   <%= simple_form_for @task, url: task_path(@task), method: :put do |f| %>
     <%= f.input :name %>
     <%= f.input :due_date %>
-    <%= f.input :status %>
+    <%= f.input :status, collection: ["","In Progress","Completed"] %>
     <%= f.button :submit %>
   <% end %>
 </p>
