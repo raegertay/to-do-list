@@ -1,8 +1,11 @@
 class SessionsController < ApplicationController
 
-  def new; end
+  def new
+    redirect_to tasklists_path if current_user
+  end
 
   def create
+    redirect_to tasklists_path and return if current_user
     user = User.find_by(name: params[:name])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id

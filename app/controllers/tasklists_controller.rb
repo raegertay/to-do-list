@@ -68,7 +68,7 @@ class TasklistsController < ApplicationController
     if Tasklist.column_names.include?(params[:sort]) || Task.column_names.include?(params[:sort])
       params[:sort]
     else
-       'name'
+      'name'
     end
   end
 
