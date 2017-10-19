@@ -1,0 +1,11 @@
+<h1 class='section-title text-center'>Login</h1>
+
+<p class='flash-alert text-center'><%= flash[:notice] %></p>
+
+<%= simple_form_for :new_session, url: sessions_path, method: :post, html: {class: 'form-horizontal'} do |f| %>
+<%= f.input :name, label: 'Username', input_html: {name: 'name'} %>
+<%= f.input :password_digest, label: 'Password', input_html: {name: 'password'} %>
+<%= f.button :submit, "Login" %>
+<% end %>
+
+<p class='text-center'>No account? <%= link_to 'Sign up here', signup_path %></p>

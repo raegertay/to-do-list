@@ -1,5 +1,7 @@
 <h1 class='section-title text-center'>Sign Up</h1>
 
+<%= link_to 'Back', root_path %>
+
 <ul>
   <% @user.errors[:name].each do |message| %>
   <li><%= message %></li>
