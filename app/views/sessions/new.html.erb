@@ -1,6 +1,6 @@
 <h1 class='section-title text-center'>Login</h1>
 
-<p class='flash-alert text-center'><%= flash[:notice] %></p>
+<p class='flash-alert text-center'><%= flash[:alert] %></p>
 
 <%= simple_form_for :new_session, url: sessions_path, method: :post, html: {class: 'form-horizontal'} do |f| %>
 <%= f.input :name, label: 'Username', input_html: {name: 'name'} %>

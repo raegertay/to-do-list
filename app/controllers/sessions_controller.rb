@@ -8,8 +8,8 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to tasklists_path
     else
-      flash.now[:alert] = 'Username or password is invalid'
-      render :new
+      flash[:alert] = 'Username or password is invalid'
+      redirect_to root_path
     end
   end
 
