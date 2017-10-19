@@ -1,6 +1,7 @@
 class Tasklist < ApplicationRecord
 
   has_many :tasks, dependent: :destroy
+  belongs_to :user
 
   validates :name, presence: { message: 'Tasklist Name is mandatory' },
                    uniqueness: { message: 'Tasklist already exist' }
