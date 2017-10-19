@@ -2,10 +2,6 @@ class TasksController < ApplicationController
 
 before_action :prepare_tasklist, only: [:create, :new]
 
-  def index
-    @task = Task.all
-  end
-
   def new
   end
 

@@ -15,7 +15,7 @@ class TasklistsController < ApplicationController
   end
 
   def show
-    @tasks = @tasklist.tasks
+    @tasks = @tasklist.tasks.search(search_term)
   end
 
   def new
