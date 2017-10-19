@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
 
-before_action :prepare_tasklist
+before_action :prepare_tasklist, only: [:create, :new]
 
   def index
     @task = Task.all
@@ -25,13 +25,13 @@ before_action :prepare_tasklist
   def update
     @task = Task.find(params[:id])
     @task.update(task_params)
-    redirect_to tasklist_task_index_path(:tasklist_id)
+    redirect_to tasklist_path(@task.tasklist)
   end
 
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    redirect_to task_path(params[:book_id])
+    redirect_to tasklist_path(@task.tasklist)
   end
 
 private
