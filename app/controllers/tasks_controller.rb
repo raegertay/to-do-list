@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
 
-before_action :prepare_tasklist, only: [:create, :new]
+  before_action :prepare_tasklist, only: [:create, :new]
+  before_action :login_check
 
   def new
   end
@@ -30,7 +31,7 @@ before_action :prepare_tasklist, only: [:create, :new]
     redirect_to tasklist_path(@task.tasklist)
   end
 
-private
+  private
 
   def task_params
     params.require(:task).permit(:name, :due_date, :status)
