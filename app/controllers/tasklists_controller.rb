@@ -15,7 +15,7 @@ class TasklistsController < ApplicationController
   end
 
   def show
-    @tasks = @tasklist.tasks.search(search_term)
+    @tasks = @tasklist.tasks.search(search_term).order(sort_column + ' ' + sort_direction)
   end
 
   def new
@@ -64,7 +64,11 @@ class TasklistsController < ApplicationController
   end
 
   def sort_column
-    Tasklist.column_names.include?(params[:sort]) ? params[:sort] : 'name'
+    if Tasklist.column_names.include?(params[:sort]) || Task.column_names.include?(params[:sort])
+      params[:sort]
+    else
+       'name'
+    end
   end
 
   def sort_direction
