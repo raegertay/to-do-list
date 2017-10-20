@@ -11,11 +11,9 @@
         <%= f.input :name, label: false, input_html: {name: 'name'} %>
         <p>Password</p>
         <%= f.input :password_digest, label: false, input_html: {name: 'password'} %>
-      </div>
-      <div class="row justify-content-center">
         <%= f.button :submit, "Login" %>
         <% end %>
-      </div>
+        </div>
       <br>
       <div class="row justify-content-center">
         <p class='flash-alert text-center'></p><%= flash[:alert] %></p>
