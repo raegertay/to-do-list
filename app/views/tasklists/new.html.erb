@@ -1,7 +1,6 @@
-<h1 class='display-3 text-center'>New Task List Name</h1>
-<br>
-<div class="container">
+<div class="container tasklist">
   <div class="row justify-content-center">
+    <h1 class='display-3 text-center'>New Task List</h1>
     <div class="col-8">
       <%= simple_form_for @tasklist, url: tasklists_path, method: :post, html: {class: 'form-horizontal'} do |f| %>
       <%= f.input :name, size: "100", label: false, placeholder: "School", error: false %>

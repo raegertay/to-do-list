@@ -13,10 +13,15 @@
   </head>
 
   <body>
-    <% if current_user %>
-      <p>Logged in as <%= current_user.name %></p>
-      <%= link_to 'Logout', logout_path %>
-    <% end %>
-    <%= yield %>
+    <div class="container user-details">
+      <div class="row">
+          <% if current_user %>
+            <p>Logged in as <%= current_user.name %>
+              &nbsp&nbsp|&nbsp&nbsp
+            <button type="button" class="btn btn-outline-dark btn-sm"><%= link_to 'Logout', logout_path %></button>
+          <% end %></p>
+      </div>
+    </div>
+      <%= yield %>
   </body>
 </html>
