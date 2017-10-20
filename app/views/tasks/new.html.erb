@@ -4,7 +4,7 @@
     <div class="col-8">
       <h3>Add New Task</h3>
       <%= simple_form_for @tasklist.tasks.build, url: tasklist_tasks_path(@tasklist), method: :post do |f| %>
-      <%= f.input :name, label: false, as: :text %>
+      <%= f.input :name, label: false%>
       <div class="row justify-content-center">
         <%= f.input :due_date %>
       </div>

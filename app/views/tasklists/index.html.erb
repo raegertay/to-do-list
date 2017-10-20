@@ -66,10 +66,9 @@
           <tr>
             <th scope="row"><%= index %></th>
             <td><%= tasklist.name %></td>
-            <td><a id="axn-show"><%= link_to 'Show Tasks', tasklist_path(tasklist) %></a></td>
-            <td><a id="axn-edit" href= <%= edit_tasklist_path(tasklist) %> >
-              <i class="fa-pencil-square-o"></i></a></td>
-            <td><a id="axn-delete"><%= link_to 'Delete', tasklist_path(tasklist), method: :delete, data: { confirm: "Are you sure you want to delete Task list: #{tasklist.name}?" } %></a></td>
+            <td><a id="axn-show"><%= link_to image_tag('doc', size: '25'), tasklist_path(tasklist), title: "Show All Tasks" %></a></td>
+            <td><a id="axn-edit"><%= link_to image_tag('pencil', size: '25'), edit_tasklist_path(tasklist), title: "Edit Task List" %></a></td>
+            <td><a id="axn-delete"><%= link_to image_tag('bin', size: '25'), tasklist_path(tasklist), title: "Delete Task List", method: :delete, data: { confirm: "Are you sure you want to delete Task list: #{tasklist.name}?" } %></a></td>
           </tr>
           <% end %>
         </tbody>

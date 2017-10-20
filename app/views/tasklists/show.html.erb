@@ -35,7 +35,8 @@
           <th><%= sortable 'name', 'Task Name' %></th>
           <th><%= sortable 'due_date' %></th>
           <th><%= sortable 'status'%></th>
-          <th><%= 'Mark as completed' %></th>
+          <th><%= 'Mark Done' %></th>
+          <th colspan="3"></th>
         </tr>
       </thead>
       <tbody>
@@ -46,9 +47,9 @@
           <td><%= task.name %></td>
           <td><%= task.due_date %></td>
           <td><%= task.status ? 'Completed' : 'In progress' %></td>
-          <td><%= link_to('Tick', task_path(task, task: {status: true}), method: :put)  unless task.status %></td>
-          <td><%= link_to 'Edit', edit_task_path(task) %></td>
-          <td><%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: "Are you sure you want to delete task: #{task.name}?" } %></td>
+          <td><%= link_to(image_tag('check', size: '25'), task_path(task, task: {status: true}), method: :put)  unless task.status %></td>
+          <td><%= link_to image_tag('pencil', size: '25'), edit_task_path(task), title: "Edit This Task" %></td>
+          <td><%= link_to image_tag('bin', size: '25'), task_path(task), title: "Delete This Task", method: :delete, data: { confirm: "Are you sure you want to delete task: #{task.name}?" } %></td>
         </tr>
         <% end %>
       </tbody>
