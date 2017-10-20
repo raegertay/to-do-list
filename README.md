@@ -1,24 +1,49 @@
-# README
+# TO-DO-LIST APP
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation Guide
 
-Things you may want to cover:
+1. Clone to your local folder:
+```
+git clone https://github.com/jsio001/to-do-list.git
+```
 
-* Ruby version
+2. Install all gems:
+```
+bundle install
+```
 
-* System dependencies
+3. Navigate to "localhost:3000" in your web browser. 
 
-* Configuration
+You should be able to see the login page.
 
-* Database creation
+## Quickstart Guide
 
-* Database initialization
+1. Sign up for an account if you don't already have one. Otherwise, login as usual.
 
-* How to run the test suite
+2. After sign-up/login, you will be navigated to the 'Tasklists' page.
 
-* Services (job queues, cache servers, search engines, etc.)
+3. In the 'Tasklists' page, you can create new tasklist, or modify existing ones.
 
-* Deployment instructions
+4. For each Tasklist, there are 3 options:
+  * View all tasks
+  * Edit Tasklist
+  * Delete Tasklist
 
-* ...
+5. When you view all tasks, you will be navigated to the 'Tasks' page for that particular tasklist.
+
+6. In the 'Tasks' page, you can create new task, or modify existing ones.
+
+7. For each Task, there are 3 options:
+  * Mark 'In Progress' tasks as completed
+  * Edit Task
+  * Delete Task
+  
+## Features Overview
+
+1. Clean and easy to use interface
+2. User authentication to keep your tasklists/tasks secured
+3. Handy search function for tasklists & tasks
+4. Sorting for columns
+5. Pagination
+
+Stay tuned for more features!
