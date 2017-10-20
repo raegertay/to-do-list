@@ -1,13 +1,26 @@
-<h1>
-
-</h1>
-<h3>Tasks</h3>
-
-<p>
-  <%= simple_form_for @task, url: task_path(@task), method: :put do |f| %>
-    <%= f.input :name %>
-    <%= f.input :due_date %>
-    <%= f.input :status, collection: ["","In Progress","Completed"] %>
-    <%= f.button :submit %>
-  <% end %>
-</p>
+<h1 class="display-3 text-center"><%= @task.tasklist.name %></h1>
+<br>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <h3>Edit Task</h3>
+      <%= simple_form_for @task, url: task_path(@task), method: :put do |f| %>
+      <%= f.input :name, label: false, as: :text %>
+      <div class="row justify-content-center">
+        <%= f.input :due_date %>&nbsp;&nbsp;&nbsp;
+        <%= f.input :status, collection: ["In Progress","Completed"] %>
+      </div>
+      <br>
+      <div class="row justify-content-center">
+        <%= f.button :submit, "Update Task" %>
+        <% end %>&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-outline-primary">
+          <a id="axn-all-tasks"><%= link_to 'Show All Tasks', tasklist_path(@task.tasklist) %></a>
+        </button>&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-outline-primary">
+          <a id="axn-full"><%= link_to 'Full Task List', tasklists_path %></a>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

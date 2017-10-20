@@ -1,42 +1,55 @@
-<%= link_to 'Back', tasklists_path %>
-
-<p class='flash-notice text-center'><%= flash[:notice] %></p>
-
-<div class='text-center'>
-  <h1 class='section-title'><%= @tasklist.name %></h1>
+<h1 class='display-3 text-center'><%= @tasklist.name %></h1>
+<br>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <div class="row justify-content-center">
+        <button type="button" class="btn btn-outline-primary btn-lg">
+          <a id="axn-new-task"><%= link_to 'Add New Task', new_tasklist_task_path(@tasklist) %></a>
+        </button>
+      </div>
+      <br>
+      <%= simple_form_for :search_bar, url: tasklist_path, method: :get do |f| %>
+      <%= f.input :search_term, label: false, placeholder: "Search tasks", input_html: {value: search_term, name: 'search_term'} %>
+      <div class="row justify-content-center">
+        <%= f.button :submit, "Search", name: nil %>
+        <% end %>&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-outline-primary">
+          <a id="axn-all-tasks"><%= link_to 'Show All Tasks', tasklist_path(@tasklist) %></a>
+        </button>&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-outline-primary">
+          <a id="axn-full"><%= link_to 'Full Task List', tasklists_path %></a>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 
-<%= link_to 'New Task', new_tasklist_task_path(@tasklist) %>
-
-<br />
-<%= simple_form_for :search_bar, url: tasklist_path, method: :get do |f| %>
-<%= f.input :search_term, label: false, placeholder: "Search tasks", input_html: {value: search_term, name: 'search_term'} %>
-<%= f.button :submit, "Search", name: nil %>
-<% end %>
-<br />
-
-<table class='table table-hover'>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th><%= sortable 'name', 'Task Name' %></th>
-      <th><%= sortable 'due_date' %></th>
-      <th><%= sortable 'status'%></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% count = 0 %>
-    <% @tasks.each.with_index(1) do |task, index| %>
-    <tr>
-      <th scope="row"><%= index %></th>
-      <td><%= task.name %></td>
-      <td><%= task.due_date %></td>
-      <td><%= task.status %></td>
-      <td><%= link_to 'Edit', edit_task_path(task) %></td>
-      <td><%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: "Are you sure you want to delete task: #{task.name}?" } %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<br>
+<div class="container">
+  <div class="row justify-content-center">
+    <table class='table table-responsive table-hover'>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th><%= sortable 'name', 'Task Name' %></th>
+          <th><%= sortable 'due_date' %></th>
+          <th><%= sortable 'status'%></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% count = 0 %>
+        <% @tasks.each.with_index(1) do |task, index| %>
+        <tr>
+          <th scope="row"><%= index %></th>
+          <td><%= task.name %></td>
+          <td><%= task.due_date %></td>
+          <td><%= task.status %></td>
+          <td><%= link_to 'Edit', edit_task_path(task) %></td>
+          <td><%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: "Are you sure you want to delete task: #{task.name}?" } %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
