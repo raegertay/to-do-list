@@ -12,7 +12,7 @@ User.create(name: 'admin', password: 'password', password_confirmation: 'passwor
 
 admin = User.find_by(name: 'admin')
 admin.tasklists.create(name: 'ALPHA Camp')
-33.times do
+150.times do
   admin.tasklists.create(name: Faker::Company.name)
 end
 

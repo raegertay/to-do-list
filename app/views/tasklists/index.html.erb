@@ -41,7 +41,10 @@
         $('.pagination-previous').toggleClass('disabled', page <= 1);
         $('.pagination-next').toggleClass('disabled', page >= total_pages);
         $('pagination-number').removeClass('active');
-        $(`li:contains(${page.toString()})`).addClass('active');
+        // $(`.pagination-number:contains(${page.toString()})`).addClass('active');
+        $(".pagination-number").filter(function() {
+          return $(this).text() === page.toString();
+        }).addClass('active');
       <% end %>
 
   </div>
