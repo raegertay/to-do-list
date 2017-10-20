@@ -3,12 +3,13 @@ class TasklistsController < ApplicationController
   helper_method :search_term, :sort_column, :sort_direction, :prepare_page
   before_action :prepare_tasklist, only: [:show, :destroy, :edit, :update]
   before_action :prepare_page, only: [:index]
+  before_action :login_check
 
   TASKLIST_PER_PAGE = 10
 
   def index
     # byebug
-    @tasklists = Tasklist.search(search_term).order(sort_column + ' ' + sort_direction)
+    @tasklists = current_user.tasklists.search(search_term).order(sort_column + ' ' + sort_direction)
     @total_pages = count_total_pages(@tasklists.count, TASKLIST_PER_PAGE)
     @tasklists = @tasklists.paginate(TASKLIST_PER_PAGE, @page)
     flash[:alert] = 'No task list found' if @tasklists.empty?
@@ -23,7 +24,7 @@ class TasklistsController < ApplicationController
   end
 
   def create
-    @tasklist = Tasklist.new(tasklist_params)
+    @tasklist = current_user.tasklists.build(tasklist_params)
     if @tasklist.save
       flash[:notice] = 'Tasklist created successfully'
       redirect_to tasklist_path(@tasklist)
@@ -67,7 +68,7 @@ class TasklistsController < ApplicationController
     if Tasklist.column_names.include?(params[:sort]) || Task.column_names.include?(params[:sort])
       params[:sort]
     else
-       'name'
+      'name'
     end
   end
 

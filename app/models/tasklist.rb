@@ -1,11 +1,12 @@
 class Tasklist < ApplicationRecord
 
   has_many :tasks, dependent: :destroy
+  belongs_to :user
 
   validates :name, presence: { message: 'Tasklist Name is mandatory' },
                    uniqueness: { message: 'Tasklist already exist' }
 
-  # Perform case-insensitve search on :name
+  # Perform case-insensitive search on name for a particular id
   def self.search(search_term)
     search_term ||=  ''
     lowercase_search_term = search_term.downcase
