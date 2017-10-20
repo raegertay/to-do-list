@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 20171017072717) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "name", null: false
-    t.date "due_date"
-    t.string "status"
+    t.date "due_date", null: false
+    t.boolean "status", default: false, null: false
     t.bigint "tasklist_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
