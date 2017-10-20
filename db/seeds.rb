@@ -8,6 +8,18 @@
 
 require 'faker'
 
-43.times do
-  Tasklist.create(name: Faker::Job.unique.title)
+User.create(name: 'admin', password: 'password', password_confirmation: 'password')
+
+admin = User.find_by(name: 'admin')
+admin.tasklists.create(name: 'ALPHA Camp')
+33.times do
+  admin.tasklists.create(name: Faker::Company.name)
+end
+
+
+
+alpha_camp = Tasklist.find_by(name: 'ALPHA Camp')
+
+28.times do
+  alpha_camp.tasks.create(name: Faker::ProgrammingLanguage.name, due_date: Faker::Date.between(Date.today, 30.days.from_now), status: Faker::Boolean.boolean)
 end
