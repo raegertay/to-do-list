@@ -1,10 +1,26 @@
-<h1 class='section-title text-center'>Sign Up</h1>
-
-<%= link_to 'Back', root_path %>
-
-<%= simple_form_for @user, url: signup_path, method: :post, html: {class: 'form-horizontal'} do |f| %>
-<%= f.input :name, label: 'Username', error: @user.errors[:name] %>
-<%= f.input :password, label: 'Password' %>
-<%= f.input :password_confirmation, label: 'Password Confirmation', error: "Password doesn't match" %>
-<%= f.button :submit, "Sign Up" %>
-<% end %>
+<div class="container-fluid full-img">
+  <div class="row">
+    <div class="col-6">
+        <br>
+        &nbsp;&nbsp;&nbsp;<%= link_to 'Back', root_path %>
+        <br><br><br><br><br><br>
+      <div class="row justify-content-center">
+        <h1 class='display-3 text-center'>Sign Up</h1>
+      </div>
+      <div class="row justify-content-center">
+        <%= simple_form_for @user, url: signup_path, method: :post, html: {class: 'form-horizontal'} do |f| %>
+        <p>Username</p>
+        <%= f.input :name, label: false, error: @user.errors[:name] %>
+        <p>Password</p>
+        <%= f.input :password, label: false %>
+        <p>Password Confirmation</p>
+        <%= f.input :password_confirmation, label: false, error: "Password doesn't match" %>
+      </div>
+      <div class="row justify-content-center">
+        <%= f.button :submit, "Sign Up" %>
+        <% end %>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
