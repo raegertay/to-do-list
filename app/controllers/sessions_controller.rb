@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    # byebug
     redirect_to tasklists_path and return if current_user
     user = User.find_by(name: params[:name])
     if user && user.authenticate(params[:password])
