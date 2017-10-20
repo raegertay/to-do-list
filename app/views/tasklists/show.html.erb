@@ -1,8 +1,9 @@
-<h1 class='display-3 text-center'><%= @tasklist.name %></h1>
-<br>
-<div class="container">
+<div class="container tasklist">
   <div class="row justify-content-center">
     <div class="col-8">
+      <div class="row justify-content-center">
+        <h1 class='display-3 text-center'><%= @tasklist.name %></h1>
+      </div>
       <div class="row justify-content-center">
         <button type="button" class="btn btn-outline-primary btn-lg">
           <a id="axn-new-task"><%= link_to 'Add New Task', new_tasklist_task_path(@tasklist) %></a>
@@ -24,7 +25,6 @@
     </div>
   </div>
 </div>
-
 <br>
 <div class="container">
   <div class="row justify-content-center">

@@ -1,14 +1,12 @@
-<h1 class="display-3 text-center"><%= @tasklist.name %></h1>
-<br>
 <div class="container">
   <div class="row justify-content-center">
+    <h1 class="display-3 text-center"><%= @tasklist.name %></h1>
     <div class="col-8">
       <h3>Add New Task</h3>
       <%= simple_form_for @tasklist.tasks.build, url: tasklist_tasks_path(@tasklist), method: :post do |f| %>
       <%= f.input :name, label: false, as: :text %>
       <div class="row justify-content-center">
-        <%= f.input :due_date %>&nbsp;&nbsp;&nbsp;
-        <%= f.input :status, collection: ["In Progress","Completed"] %>
+        <%= f.input :due_date %>
       </div>
       <br>
       <div class="row justify-content-center">
