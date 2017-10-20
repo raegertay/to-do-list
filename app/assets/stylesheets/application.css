@@ -13,6 +13,10 @@
  *= require_tree .
  *= require_self
  */
+.user-details {
+  margin: 20px;
+}
+
 .full-img {
   background: url("Home-Title.jpg");
   background-position: center;
@@ -25,4 +29,21 @@
 
 body {
   background-color: lightgrey;
+}
+
+/* unvisited link */
+a:link {
+    color: black;
+}
+/* visited link */
+a:visited {
+    color: darkgrey;
+}
+/* mouse over link */
+a:hover {
+    color: white;
+}
+/* selected link */
+a:active {
+    color: black;
 }
