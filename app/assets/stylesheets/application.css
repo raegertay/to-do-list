@@ -13,8 +13,12 @@
  *= require_tree .
  *= require_self
  */
+ body {
+   background-color: lightgrey;
+ }
+
 .user-details {
-  margin: 20px;
+  margin-top: 10px;
 }
 
 .full-img {
@@ -25,10 +29,6 @@
   height: 900px;
   margin: 0;
   padding: 0;
-}
-
-body {
-  background-color: lightgrey;
 }
 
 /* unvisited link */
