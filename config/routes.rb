@@ -1,13 +1,8 @@
 Rails.application.routes.draw do
 
-  root 'sessions#new'
+  root 'tasklists#index'
 
-  get 'logout', to: 'sessions#destroy'
-
-  get 'signup', to: 'users#new'
-  post 'signup', to: 'users#create'
-
-  resources :sessions, only: [:new, :create]
+  devise_for :users
 
   resources :tasklists do
     resources :tasks, except: [:show, :index], shallow: true

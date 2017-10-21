@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
 
   before_action :prepare_tasklist, only: [:create, :new]
-  before_action :login_check
+  before_action :authenticate_user!
 
   def new
   end

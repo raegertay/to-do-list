@@ -3,7 +3,7 @@ class TasklistsController < ApplicationController
   helper_method :search_term, :sort_column, :sort_direction, :prepare_page
   before_action :prepare_tasklist, only: [:show, :destroy, :edit, :update]
   before_action :prepare_page, only: [:index]
-  before_action :login_check
+  before_action :authenticate_user!
 
   TASKLIST_PER_PAGE = 10
 
