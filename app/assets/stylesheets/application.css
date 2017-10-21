@@ -13,37 +13,9 @@
  *= require_tree .
  *= require_self
  */
- body {
-   background-color: lightgrey;
- }
 
-.user-details {
-  margin-top: 10px;
-}
-
-.full-img {
-  background: url("Home-Title.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
+.login {
+  background-image: url(login_background);
   background-size: cover;
-  height: 900px;
-  margin: 0;
-  padding: 0;
-}
-
-/* unvisited link */
-a:link {
-    color: black;
-}
-/* visited link */
-a:visited {
-    color: darkgrey;
-}
-/* mouse over link */
-a:hover {
-    color: white;
-}
-/* selected link */
-a:active {
-    color: black;
+  height: 100vh;
 }
