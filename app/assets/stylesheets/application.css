@@ -36,6 +36,11 @@
   height: 275px;
 }
 
+.card-header {
+  background-color: rgba(13, 152, 186, 0.7);
+}
+
 .card-body {
   overflow-y: scroll;
+  background-color: rgba(255, 255, 102, 0.7);
 }

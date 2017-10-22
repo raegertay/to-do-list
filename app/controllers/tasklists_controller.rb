@@ -26,7 +26,7 @@ class TasklistsController < ApplicationController
     @tasklist = current_user.tasklists.build(tasklist_params)
     if @tasklist.save
       flash[:notice] = 'Tasklist created successfully'
-      redirect_to tasklist_path(@tasklist)
+      redirect_to tasklists_path
     else
       render :new
     end

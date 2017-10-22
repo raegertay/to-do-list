@@ -1,0 +1,17 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-2'>
+      <%= link_to image_tag('bin', size: '20'), tasklist_path(tasklist), title: "Delete Task List", method: :delete, data: { confirm: "Are you sure you want to delete taskist: #{tasklist.name}?" } %>
+    </div>
+    <div class='col-10'>
+      <%= simple_form_for tasklist, url: tasklist_path(tasklist), method: :put do |f| %>
+      <div class='input-group input-group-sm'>
+        <%= f.input_field :name, label: false, class: 'form-control' %>
+        <span class="input-group-btn">
+          <%= f.button :submit, "Save" %>
+        </span>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

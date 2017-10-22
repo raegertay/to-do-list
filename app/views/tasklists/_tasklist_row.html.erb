@@ -3,14 +3,17 @@
   <% tasklists.each do |tasklist| %>
   <div class='col-3'>
 
-    <div class="card">
+    <div class="card border-0">
       <div class='card-header'>
         <div class='row'>
-          <div class='col-10'>
+          <div class='col-8'>
             <b><%= tasklist.name %></b>
           </div>
           <div class='col-2'>
-            <%= content_tag 'a', image_tag('icons/edit', size: '20'), class: 'tasklist-' + tasklist.id.to_s, 'data-toggle': 'popover', 'data-placement': 'top', 'data-trigger':'click', tabindex: "0", 'data-content': "#{render partial: 'tasklists/tasklist_edit', locals: {tasklist: tasklist}}" %>
+            <%= content_tag 'a', image_tag('icons/edit', size: '20'), 'data-toggle': 'popover', 'data-placement': 'top', 'data-trigger':'click', tabindex: "0", 'data-content': "#{render partial: 'tasklists/tasklist_edit_popover', locals: {tasklist: tasklist}}" %>
+          </div>
+          <div class='col-2'>
+            <%= content_tag 'a', image_tag('icons/new', size: '25'), 'data-toggle': 'popover', 'data-placement': 'top', 'data-trigger':'click', tabindex: "0", 'data-content': "#{render partial: 'tasks/task_new_popover', locals: {tasklist: tasklist}}" %>
           </div>
         </div>
       </div>
@@ -21,13 +24,16 @@
             <tr>
               <th scope="col">Task</th>
               <th scope="col">Due date</th>
+              <th scope="col" colspan="1"></th>
             </tr>
           </thead>
           <tbody>
             <% tasklist.tasks.each do |task| %>
             <tr>
+              <% next if task.id.nil? %>
               <td><%= task.name %></td>
-              <td><%= task.due_date.strftime("%-d %b") %></td>
+              <td><%= task.due_date.try(:strftime, "%-d %b") %></td>
+              <td><%= content_tag 'a', image_tag('icons/edit', size: '15'), 'data-toggle': 'popover', 'data-placement': 'top', 'data-trigger':'click', tabindex: "0", 'data-content': "#{render partial: 'tasks/task_edit_popover', locals: {task: task}}" %></td>
             </tr>
             <% end %>
           </tbody>

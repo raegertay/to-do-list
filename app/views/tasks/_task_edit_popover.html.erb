@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <%= simple_form_for task, url: task_path(task), method: :put do |f| %>
+      <%= f.input :name, label: false, placeholder: 'Add new task', input_html: {class: 'form-control-sm'} %>
+      <%= f.input :due_date, order: [:day, :month, :year], input_html: {class: 'form-control-sm'} %>
+      <%= f.button :submit, "Save", class: 'btn-sm' %>
+      <% end %>
+      <%= link_to image_tag('bin', size: '20'), task_path(task), title: "Delete Task", method: :delete, data: { confirm: "Are you sure you want to delete task: #{task.name}?" } %>
+    </div>
+  </div>
+</div>
