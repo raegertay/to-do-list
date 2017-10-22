@@ -37,10 +37,10 @@ class TasklistsController < ApplicationController
   def update
     if @tasklist.update(tasklist_params)
       flash[:notice] = 'Tasklist updated succesfully'
-      redirect_to tasklists_path
     else
-      render :edit
+      flash[:alert] = @tasklist.errors[:name][0]
     end
+    redirect_to tasklists_path
   end
 
   def destroy

@@ -13,3 +13,18 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+
+  $(function () {
+    $('[data-toggle="popover"]').popover({
+        container: 'body',
+        html: true,
+        content: function(tasklist) {
+          return tasklist;
+          // <%= render partial: 'tasklists/tasklist_edit', locals: {tasklist: tasklist} %>;
+        }
+    })
+  });
+
+});

@@ -1,0 +1,10 @@
+<%= link_to image_tag('bin', size: '15'), tasklist_path(tasklist), title: "Delete Task List", method: :delete, data: { confirm: "Are you sure you want to delete Task list: #{tasklist.name}?" } %>
+
+<%= simple_form_for tasklist, url: tasklist_path(tasklist), method: :put do |f| %>
+<div class='input-group input-group-sm'>
+  <%= f.input_field :name, label: false, class: 'form-control' %>
+  <span class="input-group-btn">
+    <%= f.button :submit, "Save" %>
+  </span>
+</div>
+<% end %>
