@@ -1,14 +1,13 @@
 class TasklistsController < ApplicationController
 
-  helper_method :search_term, :sort_column, :sort_direction, :prepare_page
+  helper_method :search_term, :sort_column, :sort_direction, :prepare_page, :tasklist_per_row
   before_action :prepare_tasklist, only: [:show, :destroy, :edit, :update]
   before_action :prepare_page, only: [:index]
   before_action :authenticate_user!
 
-  TASKLIST_PER_PAGE = 10
+  TASKLIST_PER_PAGE = 8
 
   def index
-    # byebug
     @tasklists = current_user.tasklists.search(search_term).order(sort_column + ' ' + sort_direction)
     @total_pages = count_total_pages(@tasklists.count, TASKLIST_PER_PAGE)
     @tasklists = @tasklists.paginate(TASKLIST_PER_PAGE, @page)
@@ -83,6 +82,10 @@ class TasklistsController < ApplicationController
 
   def count_total_pages(total_records, record_per_page)
     (total_records / record_per_page) + 1
+  end
+
+  def tasklist_per_row
+    TASKLIST_PER_PAGE / 2
   end
 
 end

@@ -14,8 +14,21 @@
  *= require_self
  */
 
-.login {
+.container-fluid {
   background-image: url(login_background);
   background-size: cover;
   height: 100vh;
+  padding-top: 10px;
+}
+
+.new-icon {
+  margin-right: 10px;
+}
+
+.card {
+  height: 275px;
+}
+
+.card-body {
+  overflow-y: scroll;
 }

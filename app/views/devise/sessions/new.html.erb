@@ -1,8 +1,10 @@
-<div class='login container-fluid d-flex flex-column align-items-center justify-content-center'>
+<div class='container-fluid login d-flex flex-column align-items-center justify-content-center'>
 
   <div class='row'>
     <div class='col-12 text-center'>
       <h2>Log in</h2>
+      <p class='flash-notice text-center'><%= flash[:notice] %></p>
+      <p class='flash-alert text-center'><%= flash[:alert] %></p>
     </div>
   </div>
 
