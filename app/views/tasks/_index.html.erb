@@ -1,0 +1,8 @@
+<% tasks.each do |task| %>
+<tr>
+  <% next if task.id.nil? %>
+  <td><%= task.name %></td>
+  <td><%= task.due_date.try(:strftime, "%-d %b") %></td>
+  <td><%= content_tag 'a', image_tag('icons/edit', size: '15'), 'data-toggle': 'popover', 'data-placement': 'top', 'data-trigger':'click', tabindex: "0", 'data-content': "#{render partial: 'tasks/edit', locals: {task: task}}" %></td>
+</tr>
+<% end %>

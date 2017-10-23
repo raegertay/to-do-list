@@ -1,0 +1,2 @@
+$('body').click();
+$('.card-' + <%= @tasklist.id %> + ' tbody').html("<%= j render partial: 'tasks/index', locals: {tasks: @tasklist.tasks} %>");
