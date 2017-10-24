@@ -10,7 +10,7 @@ require 'faker'
 
 admin = User.create(email: 'admin@gmail.com', password: 'password', password_confirmation: 'password')
 
-45.times do
+42.times do
   tasklist = admin.tasklists.create(name: Faker::Company.name)
   10.times do
     tasklist.tasks.create(name: Faker::ProgrammingLanguage.name, due_date: Faker::Date.between(Date.today, 30.days.from_now), status: Faker::Boolean.boolean)
